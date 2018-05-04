@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 90%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 20;
+        padding: 0;
+      }
+     #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <input onclick="clearMarkers();" type=button value="Hide Markers">
+      <input onclick="showMarkers();" type=button value="Show All Markers">
+      <input href="index.html" type=button value="Back to see tasks">
+    </div>
+
+      
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+
+        map = new google.maps.Map(document.getElementById('map'), {
+
+          center: {lat: 52.193636, lng: -2.221575},
+          zoom: 17
+        });
+          
+          
+          
+          
+          
+
+        var marker = new google.maps.Marker({
+        map: map,
+        position: {lat: 52.193636, lng: -2.221575},
+        title: "Hello"
+        });
+
+          google.maps.event.addListener(map, 'click', function(event) {
+              
+          console.log("clicked " + event.latLng);
+              
+          var marker = new google.maps.Marker({
+            
+            position: event.latLng,
+            map: map,
+            title: "Hello"
+        });
+              
+          });
+
+          
+          
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKJbE6gznTcgmMjeks-e7-dvvwfuL-eFI&callback=initMap"
+    async defer></script>
+      
+  </body>
+</html>
